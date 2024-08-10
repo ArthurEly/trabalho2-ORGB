@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import subprocess
 
@@ -20,14 +22,14 @@ for exe in executables:
     
     # Verifica se o arquivo é executável
     if os.access(exe_path, os.X_OK):
-        print(f"Executando {exe} com gem5...")
+        print("Executando {} com gem5...".format(exe))
         
         try:
             subprocess.run([gem5_executable, simulate_script, 'run-benchmark', '-c', exe_path], check=True)
-            print(f"{exe} executado com sucesso.\n")
+            print("{} executado com sucesso.\n".format(exe))
         except subprocess.CalledProcessError as e:
-            print(f"Erro ao executar {exe}: {e}\n")
+            print("Erro ao executar {}: {}\n".format(exe, e))
     else:
-        print(f"{exe} não é executável.\n")
+        print("{} não é executável.\n".format(exe))
 
 print("Todos os executáveis foram executados com gem5.")
