@@ -9,15 +9,12 @@ if [ ! -d "orgb_progs" ]; then
     exit 1
 fi
 
-# Entra na pasta orgb_progs
-cd orgb_progs
-
-# Executa todos os arquivos que são executáveis
-for file in *; do
+# Executa todos os arquivos que são executáveis na pasta orgb_progs
+for file in orgb_progs/*; do
     if [ -x "$file" ] && [ ! -d "$file" ]; then
-        echo "Executando $file com gem5..."
-        /home/orgb/gem5/gem5 orgb_configs/simulate.py run-benchmark -c "orgb_progs/$file"
-        echo "$file executado."
+        echo "Executando $(basename "$file") com gem5..."
+        ./gem5 orgb_configs/simulate.py run-benchmark -c "$file"
+        echo "$(basename "$file") executado."
         echo ""
     fi
 done
