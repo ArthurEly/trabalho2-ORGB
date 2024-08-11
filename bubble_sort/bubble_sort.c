@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define ARRAY_SIZE 100000 // Defina o tamanho do array para a análise
+#define ARRAY_SIZE 1000 // Defina o tamanho do array para a análise
 
 void bubbleSort(int arr[], int n) {
     int i, j, temp;
