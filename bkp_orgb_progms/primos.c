@@ -2,11 +2,11 @@
 
 int main(){
 
-    int primos[500];
+    int primos[2000];
     int ind = 0, div = 2, primo = 1;
     
 
-    for (int i = 3; i < 1000; i++){
+    for (int i = 3; i < 10000; i++){
         
         while (primo && div != i){
             if (i % div == 0)

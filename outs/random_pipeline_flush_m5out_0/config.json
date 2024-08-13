@@ -138,7 +138,7 @@
                 "indexing_policy": {
                     "name": "indexing_policy", 
                     "eventq_index": 0, 
-                    "assoc": 8, 
+                    "assoc": 16, 
                     "cxx_class": "SetAssociative", 
                     "path": "system.l3cache.tags.indexing_policy", 
                     "entry_size": 64, 
@@ -146,7 +146,7 @@
                     "size": 262144
                 }, 
                 "sequential_access": false, 
-                "assoc": 8, 
+                "assoc": 16, 
                 "power_model": [], 
                 "cxx_class": "BaseSetAssoc", 
                 "p_state_clk_gate_max": 1000000000000, 
@@ -171,7 +171,7 @@
             "name": "l3cache", 
             "p_state_clk_gate_bins": 20, 
             "sequential_access": false, 
-            "assoc": 8
+            "assoc": 16
         }, 
         "eventq_index": 0, 
         "default_p_state": "UNDEFINED", 
@@ -403,7 +403,7 @@
                 "indexing_policy": {
                     "name": "indexing_policy", 
                     "eventq_index": 0, 
-                    "assoc": 4, 
+                    "assoc": 8, 
                     "cxx_class": "SetAssociative", 
                     "path": "system.l2cache.tags.indexing_policy", 
                     "entry_size": 64, 
@@ -411,7 +411,7 @@
                     "size": 8192
                 }, 
                 "sequential_access": false, 
-                "assoc": 4, 
+                "assoc": 8, 
                 "power_model": [], 
                 "cxx_class": "BaseSetAssoc", 
                 "p_state_clk_gate_max": 1000000000000, 
@@ -436,7 +436,7 @@
             "name": "l2cache", 
             "p_state_clk_gate_bins": 20, 
             "sequential_access": false, 
-            "assoc": 4
+            "assoc": 8
         }, 
         "path": "system", 
         "work_end_ckpt_count": 0, 
@@ -474,16 +474,16 @@
                 "type": "X86TLB", 
                 "size": 64
             }, 
-            "fetchWidth": 2, 
+            "fetchWidth": 1, 
             "max_loads_all_threads": 0, 
             "cpu_id": -1, 
-            "fetchToDecodeDelay": 3, 
+            "fetchToDecodeDelay": 2, 
             "renameToDecodeDelay": 1, 
             "do_quiesce": true, 
             "renameToROBDelay": 2, 
             "power_model": [], 
             "max_insts_all_threads": 0, 
-            "decodeWidth": 2, 
+            "decodeWidth": 1, 
             "commitToFetchDelay": 1, 
             "needsTSO": true, 
             "smtIQThreshold": 100, 
@@ -493,7 +493,7 @@
                     "pid": 100, 
                     "kvmInSE": false, 
                     "cxx_class": "Process", 
-                    "executable": "orgb_progs/bubble_sort", 
+                    "executable": "orgb_progs/random_pipeline_flush", 
                     "drivers": [], 
                     "system": "system", 
                     "gid": 100, 
@@ -510,7 +510,7 @@
                     "path": "system.cpu.workload", 
                     "name": "workload", 
                     "cmd": [
-                        "orgb_progs/bubble_sort"
+                        "orgb_progs/random_pipeline_flush"
                     ], 
                     "errout": "cerr", 
                     "useArchPT": false, 
@@ -530,10 +530,10 @@
                 "cxx_class": "Trace::ExeTracer"
             }, 
             "decodeToFetchDelay": 1, 
-            "renameWidth": 2, 
+            "renameWidth": 1, 
             "numThreads": 1, 
             "syscallRetryLatency": 10000, 
-            "squashWidth": 16, 
+            "squashWidth": 8, 
             "function_trace": false, 
             "backComSize": 32, 
             "decodeToRenameDelay": 2, 
@@ -979,7 +979,7 @@
                     "indexing_policy": {
                         "name": "indexing_policy", 
                         "eventq_index": 0, 
-                        "assoc": 4, 
+                        "assoc": 8, 
                         "cxx_class": "SetAssociative", 
                         "path": "system.cpu.icache.tags.indexing_policy", 
                         "entry_size": 64, 
@@ -987,7 +987,7 @@
                         "size": 1024
                     }, 
                     "sequential_access": false, 
-                    "assoc": 4, 
+                    "assoc": 8, 
                     "power_model": [], 
                     "cxx_class": "BaseSetAssoc", 
                     "p_state_clk_gate_max": 1000000000000, 
@@ -1012,7 +1012,7 @@
                 "name": "icache", 
                 "p_state_clk_gate_bins": 20, 
                 "sequential_access": false, 
-                "assoc": 4
+                "assoc": 8
             }, 
             "path": "system.cpu", 
             "numRobs": 1, 
@@ -1064,7 +1064,7 @@
             "smtROBPolicy": "Partitioned", 
             "iewToFetchDelay": 1, 
             "do_statistics_insts": true, 
-            "dispatchWidth": 2, 
+            "dispatchWidth": 1, 
             "dcache": {
                 "replacement_policy": {
                     "eventq_index": 0, 
@@ -1112,7 +1112,7 @@
                     "indexing_policy": {
                         "name": "indexing_policy", 
                         "eventq_index": 0, 
-                        "assoc": 4, 
+                        "assoc": 8, 
                         "cxx_class": "SetAssociative", 
                         "path": "system.cpu.dcache.tags.indexing_policy", 
                         "entry_size": 64, 
@@ -1120,7 +1120,7 @@
                         "size": 1024
                     }, 
                     "sequential_access": false, 
-                    "assoc": 4, 
+                    "assoc": 8, 
                     "power_model": [], 
                     "cxx_class": "BaseSetAssoc", 
                     "p_state_clk_gate_max": 1000000000000, 
@@ -1145,11 +1145,11 @@
                 "name": "dcache", 
                 "p_state_clk_gate_bins": 20, 
                 "sequential_access": false, 
-                "assoc": 4
+                "assoc": 8
             }, 
             "commitToDecodeDelay": 1, 
             "smtIQPolicy": "Partitioned", 
-            "issueWidth": 2, 
+            "issueWidth": 1, 
             "LSQCheckLoads": true, 
             "commitToRenameDelay": 1, 
             "system": "system", 
@@ -1158,7 +1158,7 @@
             "eventq_index": 0, 
             "default_p_state": "UNDEFINED", 
             "type": "DerivO3CPU", 
-            "wbWidth": 2, 
+            "wbWidth": 1, 
             "numPhysVecRegs": 256, 
             "interrupts": [
                 {
@@ -1226,7 +1226,7 @@
             "do_checkpoint_insts": true, 
             "cxx_class": "DerivO3CPU", 
             "commitToIEWDelay": 1, 
-            "commitWidth": 2, 
+            "commitWidth": 1, 
             "clk_domain": "system.clk_domain", 
             "function_trace_start": 0, 
             "smtFetchPolicy": "SingleThread", 

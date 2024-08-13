@@ -29,28 +29,35 @@ int main()
     int i;
     volatile int result = 0; // Volatile to prevent optimization
 
-    for (i = 0; i < 100; i++)
+    for (i = 0; i < 1000; i++)
     {
         sleep_ms(1);
-        srand(clock());
+        srand(42);
         int random_value = rand() % 100;
-        // printf("Random value: %d\n", random_value);
-        // printf("Iteration: %d\n", i);
-        // Introduce an unpredictable branch
-        if (random_value % 2 == 0)
+        
+        // Introduce more unpredictable branches
+        if (random_value < 25)
         {
             result += 1;
             float temporary = calcule((rand() % 5) + 1);
-            // printf("Calcule: %f\n", temporary);
         }
-        else
+        else if (random_value < 50)
         {
             result -= 1;
             float temporary = calcule((float)((rand() % 5) + 1));
-            // printf("Calcule: %f\n", temporary);
+        }
+        else if (random_value < 75)
+        {
+            result *= 2;
+            float temporary = calcule((float)((rand() % 5) + 1));
+        }
+        else
+        {
+            result /= 2;
+            float temporary = calcule((float)((rand() % 5) + 1));
         }
     }
 
-    // printf("Result: %d\n", result);
+    printf("Result: %d\n", result);
     return 0;
 }
