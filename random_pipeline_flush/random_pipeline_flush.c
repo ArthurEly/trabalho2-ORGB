@@ -54,13 +54,13 @@ int main()
         if (random_value % 2 == 0)
         {
             result += 1;
-            int temporary = fibonacci((rand() % 47) + 1);
+            int temporary = fibonacci((rand() % 10) + 1);
             printf("Fibonacci: %d\n", temporary);
         }
         else
         {
             result -= 1;
-            float temporary = bce((float)((rand() % 43) + 1));
+            float temporary = bce((float)((rand() % 12) + 1));
             printf("BCE: %f\n", temporary);
         }
     }
