@@ -4,9 +4,14 @@
 #include <unistd.h>
 #include <math.h>
 
-float bce(float n)
+float calcule(float n)
 {
-    return (n * log(n) + (1 - n) * log(1 - n));
+    float result = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        result += i * n;
+    }
+    return result / n;
 }
 
 void sleep_ms(int ms)
@@ -29,23 +34,23 @@ int main()
         sleep_ms(1);
         srand(clock());
         int random_value = rand() % 100;
-        printf("Random value: %d\n", random_value);
-        printf("Iteration: %d\n", i);
+        // printf("Random value: %d\n", random_value);
+        // printf("Iteration: %d\n", i);
         // Introduce an unpredictable branch
         if (random_value % 2 == 0)
         {
             result += 1;
-            int temporary = bce((rand() % 5) + 1);
-            printf("Fibonacci: %d\n", temporary);
+            float temporary = calcule((rand() % 5) + 1);
+            // printf("Calcule: %f\n", temporary);
         }
         else
         {
             result -= 1;
-            float temporary = bce((float)((rand() % 5) + 1));
-            printf("BCE: %f\n", temporary);
+            float temporary = calcule((float)((rand() % 5) + 1));
+            // printf("Calcule: %f\n", temporary);
         }
     }
 
-    printf("Result: %d\n", result);
+    // printf("Result: %d\n", result);
     return 0;
 }
