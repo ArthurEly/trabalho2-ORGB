@@ -4,28 +4,9 @@
 #include <unistd.h>
 #include <math.h>
 
-int fibonacci(int n)
-{
-    int x;
-
-    if (n == 1)
-    {
-        return (1);
-    }
-
-    if (n == 2)
-    {
-        return (1);
-    }
-
-    x = fibonacci(n - 1) + fibonacci(n - 2);
-    return (x);
-}
-
 float bce(float n)
 {
-    // return (n * log(n) + (1 - n) * log(1 - n));
-    return 1.0;
+    return (n * log(n) + (1 - n) * log(1 - n));
 }
 
 void sleep_ms(int ms)
@@ -54,13 +35,13 @@ int main()
         if (random_value % 2 == 0)
         {
             result += 1;
-            int temporary = fibonacci((rand() % 10) + 1);
+            int temporary = bce((rand() % 5) + 1);
             printf("Fibonacci: %d\n", temporary);
         }
         else
         {
             result -= 1;
-            float temporary = bce((float)((rand() % 12) + 1));
+            float temporary = bce((float)((rand() % 5) + 1));
             printf("BCE: %f\n", temporary);
         }
     }
